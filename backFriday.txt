@@ -1,0 +1,41 @@
+use backFriday
+
+db.produto.insertMany([
+{nome:"Arroz",},{nome:"feijão"},{nome:"farinha"}
+])
+
+db.venda.insertMany([
+	{num:1,produto: ObjectId("5db2313fcfcc91a2200f0626"), valor:10},
+	{num:2,produto:ObjectId("5db2313fcfcc91a2200f0627"),valor:10}
+])
+
+db.vendas2.insertMany([
+	{num:1,
+	produtos:[{nome:"Arroz"}],
+	valor:10},
+	{num:2,
+	produtos:[{nome:"Feijão"}],
+	valor:10}
+])
+
+db.vendas3.insertMany([
+	{num:1,
+	produtos:[],
+	valor:0},
+	{num:2,
+	produtos:[],
+	valor:0}
+])
+
+db.vendas3.updateOne(
+	{num:1.0},
+	{$push:{produtos:{nome:"Peixe"}}}
+)
+
+db.vendas3.find({produtos.nome:"Carne"})
+
+FAZER BAKUP:
+C:\"diretorio" mongodump --db backFriday --out d:\backup
+
+
+mongodump --collection vendas3 --db backFriday --out
